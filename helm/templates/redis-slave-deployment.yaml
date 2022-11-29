@@ -4,18 +4,7 @@ kind: Deployment
 metadata:
   name: mmredis-slave
 spec:
-  selector:
-    matchLabels:
-      app: redis
-      role: slave
-      tier: backend
   replicas: 2
-  template:
-    metadata:
-      labels:
-        app: redis
-        role: slave
-        tier: backend
     spec:
       containers:
       - name: slave
