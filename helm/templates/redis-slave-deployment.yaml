@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mmredis-slave
-  namespace: fleet-helm-example
 spec:
   replicas: 2
     spec:
