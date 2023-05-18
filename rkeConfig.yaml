@@ -1,0 +1,58 @@
+apiVersion: provisioning.cattle.io/v1
+kind: Cluster
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-fnzck
+    meta.helm.sh/release-name: rancher-aws-cluster-template-0-1684404554
+    meta.helm.sh/release-namespace: fleet-default
+  labels:
+    clusterType: demo
+  name: demo7
+  namespace: fleet-default
+spec:
+  cloudCredentialSecretName: cattle-global-data:cc-cgld2
+  kubernetesVersion: v1.24.13+rke2r1
+  localClusterAuthEndpoint: {}
+  rkeConfig:
+    chartValues: null
+    machineGlobalConfig:
+      cni: calico
+    machinePools:
+    - controlPlaneRole: true
+      displayName: demo7-controlplane
+      etcdRole: true
+      machineConfigRef:
+        kind: Amazonec2Config
+        name: demo7-controlplane
+      name: demo7-controlplane
+      quantity: 3
+    - displayName: demo7-worker
+      machineConfigRef:
+        kind: Amazonec2Config
+        name: demo7-worker
+      name: demo7-worker
+      quantity: 1
+      workerRole: true
+    upgradeStrategy:
+      controlPlaneDrainOptions:
+        deleteEmptyDirData: false
+        disableEviction: false
+        enabled: false
+        force: false
+        gracePeriod: 0
+        ignoreDaemonSets: null
+        postDrainHooks: null
+        preDrainHooks: null
+        skipWaitForDeleteTimeoutSeconds: 0
+        timeout: 0
+      workerDrainOptions:
+        deleteEmptyDirData: false
+        disableEviction: false
+        enabled: false
+        force: false
+        gracePeriod: 0
+        ignoreDaemonSets: null
+        postDrainHooks: null
+        preDrainHooks: null
+        skipWaitForDeleteTimeoutSeconds: 0
+        timeout: 0
